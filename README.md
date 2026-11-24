@@ -8,15 +8,16 @@ Pages:
 - `real-estate.html`: for property managers, owners, investors and agents
 - `contractors.html`: for HVAC contractors joining the network
 - `homeowners.html`: for homeowners and tenants
-- `request.html`: the request form (`request.html#contractor` preselects contractor)
+- `request.html`: general request form
 - `styles.css`: shared styles
+- `site.js`: form handling for every page, and the phone layout for the homepage picture
 
 No build step.
 
 ## Before going live
 
 - **Name:** "Settled" is a working name. Search `Settled` across the .html files to change it.
-- **Email:** the form opens an email to `quotes@example.com`. Change `CONTACT_EMAIL` near the bottom of `request.html` to your real inbox.
+- **Email:** the form opens an email to `quotes@example.com`. Change `CONTACT_EMAIL` at the top of `site.js` to your real inbox.
 - **Prices:** the $10,000 quote is an example and is labeled as one on the page.
 
 ## Publish with GitHub Pages
