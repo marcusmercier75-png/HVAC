@@ -2,12 +2,21 @@
 
 A one-page site for a fixed-price, replacement-only HVAC service. It's written for property managers, real estate investors and agents, and it has a section for installers.
 
-Everything lives in `index.html`: the styles, the script and the hero drawing. No build step.
+Pages:
+
+- `index.html`: homepage, a high-level overview
+- `real-estate.html`: for property managers, owners, investors and agents
+- `contractors.html`: for HVAC contractors joining the network
+- `homeowners.html`: for homeowners and tenants
+- `request.html`: the request form (`request.html#contractor` preselects contractor)
+- `styles.css`: shared styles
+
+No build step.
 
 ## Before going live
 
-- **Name:** "Settled" is a working name. Search `Settled` in `index.html` to change it.
-- **Email:** the form opens an email to `quotes@example.com`. Change `CONTACT_EMAIL` near the bottom of `index.html` to your real inbox.
+- **Name:** "Settled" is a working name. Search `Settled` across the .html files to change it.
+- **Email:** the form opens an email to `quotes@example.com`. Change `CONTACT_EMAIL` near the bottom of `request.html` to your real inbox.
 - **Prices:** the $10,000 quote is an example and is labeled as one on the page.
 
 ## Publish with GitHub Pages

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light only">
+<title>Request a Price | Settled</title>
+<meta name="description" content="Request a fixed price for a full HVAC system replacement, or apply to join our contractor network.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a class="logo" href="index.html" aria-label="Settled home">
+      <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><rect x="1.5" y="1.5" width="27" height="27" rx="5" fill="none" stroke="currentColor" stroke-width="3"/><path d="M8 15.5l4.5 4.5L22 10" fill="none" stroke="var(--copper)" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Settled
+    </a>
+    <nav aria-label="Main">
+      <a href="real-estate.html"><span class="l">For real estate pros</span><span class="s">Real estate</span></a>
+      <a href="contractors.html"><span class="l">For HVAC contractors</span><span class="s">Contractors</span></a>
+      <a href="homeowners.html"><span class="l">For homeowners</span><span class="s">Homeowners</span></a>
+    </nav>
+    <a class="btn main" href="request.html">Request a price</a>
+  </div>
+</header>
+
+<main>
+<section class="band field" id="quote" style="min-height:70vh">
+  <div class="wrap formgrid">
+    <div>
+      <h1>Request a price</h1>
+      <p class="lead">Tell us about the system. We'll reply with a link to send the label photo and the photo of the space, then send back one price.</p>
+      <p class="small">HVAC contractors can use this form too. Choose "HVAC contractor" and tell us your market.</p>
+    </div>
+    <form id="qf" novalidate>
+      <fieldset>
+        <legend>I am a</legend>
+        <div class="chips">
+          <label><input type="radio" name="role" value="Property owner or manager" checked> Property owner or manager</label>
+          <label><input type="radio" name="role" value="Real estate agent"> Agent</label>
+          <label><input type="radio" name="role" value="HVAC contractor" id="r-inst"> HVAC contractor</label>
+        </div>
+      </fieldset>
+      <div class="row2">
+        <label>Name<input id="f-name" name="name" autocomplete="name" required></label>
+        <label>Company<input id="f-co" name="company" autocomplete="organization"></label>
+      </div>
+      <div class="row2">
+        <label>Email<input id="f-email" name="email" type="email" autocomplete="email" required></label>
+        <label>Phone<input id="f-phone" name="phone" type="tel" autocomplete="tel"></label>
+      </div>
+      <div class="row2">
+        <label>Property ZIP code<input id="f-zip" name="zip" inputmode="numeric" maxlength="5" autocomplete="postal-code"></label>
+        <label>System type
+          <select id="f-type" name="type">
+            <option>Gas furnace + AC</option><option>Heat pump</option><option>Electric furnace + AC</option><option>Packaged unit</option><option>Not sure</option>
+          </select>
+        </label>
+      </div>
+      <label>Anything else we should know?<textarea id="f-notes" name="notes" placeholder="Unit age, how many properties, how soon you need it"></textarea></label>
+      <p class="err" id="err" role="alert"></p>
+      <button class="btn main" type="submit">Send my request</button>
+      <div class="done" id="done" aria-live="polite">
+        <p><b>Your email is ready to send.</b> If it didn't open, email the details below to <span id="addr"></span>.</p>
+        <p class="small" id="sum"></p>
+        <button class="btn ghost" type="button" id="copy">Copy details</button>
+      </div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span><b>Settled</b>. Full HVAC system replacements at one price.</span>
+    <span><a href="real-estate.html">Real estate pros</a> &nbsp; <a href="contractors.html">HVAC contractors</a> &nbsp; <a href="homeowners.html">Homeowners</a></span>
+  </div>
+</footer>
+<script>
+{
+  const CONTACT_EMAIL = "quotes@example.com"; // change to your real inbox
+  const $ = id => document.getElementById(id);
+  $("addr").textContent = CONTACT_EMAIL;
+
+
+  if (location.hash === "#contractor") $("r-inst").checked = true;
+
+  let text = "";
+  $("qf").addEventListener("submit", e => {
+    e.preventDefault();
+    const name = $("f-name").value.trim(), email = $("f-email").value.trim();
+    if (!name || !/^\S+@\S+\.\S+$/.test(email)) {
+      $("err").textContent = "Add your name and a valid email so we can send your price.";
+      (!name ? $("f-name") : $("f-email")).focus();
+      return;
+    }
+    $("err").textContent = "";
+    const role = document.querySelector('input[name="role"]:checked').value;
+    const lines = [
+      "I am a: " + role, "Name: " + name, "Company: " + $("f-co").value.trim(),
+      "Email: " + email, "Phone: " + $("f-phone").value.trim(),
+      "ZIP: " + $("f-zip").value.trim(), "System type: " + $("f-type").value,
+      "Notes: " + $("f-notes").value.trim()
+    ];
+    text = lines.join("\n");
+    $("sum").textContent = lines.join(" | ");
+    $("done").classList.add("show");
+    const subject = role === "HVAC contractor" ? "Contractor network: " + name : "Replacement price request: " + name;
+    location.href = "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(text);
+  });
+
+  $("copy").addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText(text); $("copy").textContent = "Copied"; }
+    catch { $("copy").textContent = "Select the text above to copy"; }
+  });
+}
+</script>
+</body>
+</html>
