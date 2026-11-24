@@ -15,8 +15,8 @@
    COLOUR and TYPE: warm white and sand, deep teal (cool air) as the field, apricot (warm air) as the accent. Figtree, heavy for headings.
    LAYOUT: headline over a full-width plate-to-price band, then plain sections in one 1120px column, teal bands for the two asks. */
 :root{color-scheme:light dark;
-  --bg:light-dark(#fffcf8,#0f1b1e);
-  --steel:light-dark(#f6efe6,#172628);
+  --bg:light-dark(#ffffff,#0f1b1e);
+  --steel:light-dark(#faf6f0,#172628);
   --line:light-dark(#e8ded1,#2b3b3e);
   --ink:light-dark(#1c2a2e,#f3eee7);
   --soft:light-dark(#566468,#b4c0c1);
@@ -37,7 +37,8 @@ p{margin:0 0 14px;max-width:64ch}
 a{color:var(--blue)}
 .wrap{max-width:1120px;margin:0 auto}
 .band{padding:clamp(44px,6vw,88px) max(5vw,18px)}
-.steel{background:var(--steel)}
+.steel{background:var(--bg)}
+main>.band+.band{border-top:1px solid var(--line)}
 .field{background:var(--field);color:var(--on-field)}
 .field p,.field li{color:#dcecea}
 .lead{font-size:20px;color:var(--soft);max-width:56ch}
@@ -120,6 +121,7 @@ header{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92
 /* example timeline */
 .tl{list-style:none;margin:26px 0 0;padding:0;max-width:760px}
 .tl li{display:grid;grid-template-columns:7.5em minmax(0,1fr);gap:18px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.22)}
+.ex .tl li{border-bottom-color:var(--line)}.ex .tl b{color:var(--blue)}.ex .tl span,.ex .tl .price{color:var(--ink)}.ex .lead,.ex .small{color:var(--soft)}
 .tl b{font:700 20px Figtree,system-ui,sans-serif;color:#fff;white-space:nowrap}
 .tl span{color:#dcecea}
 .tl .price{font-weight:700;color:#fff;white-space:nowrap}
@@ -388,7 +390,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
   </div>
 </section>
 
-<section class="band field">
+<section class="band ex">
   <div class="wrap">
     <h2>One replacement, start to finish</h2>
     <p class="lead">A property manager looks after 40 rental homes. On a hot day, a tenant reports the air has stopped, and the system is at the end of its life.</p>
