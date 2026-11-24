@@ -16,17 +16,17 @@
    COLOUR and TYPE: warm white and sand, deep teal (cool air) as the field, apricot (warm air) as the accent. Figtree, heavy for headings.
    LAYOUT: headline over a full-width plate-to-price band, then plain sections in one 1120px column, teal bands for the two asks. */
 :root{color-scheme:light;
-  --bg:light-dark(#ffffff,#0f1b1e);
-  --steel:light-dark(#faf6f0,#172628);
-  --line:light-dark(#e8ded1,#2b3b3e);
-  --ink:light-dark(#1c2a2e,#f3eee7);
-  --soft:light-dark(#566468,#b4c0c1);
-  --blue:light-dark(#0f5e6e,#6fcad6);
-  --field:light-dark(#0f4c5c,#12363e);
-  --copper:light-dark(#c9581f,#f59a6a);
+  --bg:#ffffff;
+  --steel:#faf6f0;
+  --line:#e8ded1;
+  --ink:#1c2a2e;
+  --soft:#566468;
+  --blue:#0f5e6e;
+  --field:#0f4c5c;
+  --copper:#c9581f;
   --btn:#f28c5b;--btn-ink:#1f1a17;
   --on-field:#fffaf3}
-:root,:root[data-theme=light],:root[data-theme=dark]{color-scheme:light}
+:root,:root[data-theme=light],:root[data-theme=dark],html[style]{color-scheme:light !important}
 *{box-sizing:border-box;min-width:0}
 html{scroll-padding-top:72px;scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Figtree,system-ui,sans-serif;overflow-x:clip;font-variant-numeric:tabular-nums}
