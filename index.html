@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light only">
 <title>Settled HVAC Replacement</title>
 <meta name="description" content="Full heating and cooling system replacements at one price, set before the work starts. For property owners, managers and agents, and the installers who do the work.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,7 +15,7 @@
    PICTURE: a riveted data plate feeding a quote ticket stamped "Price locked".
    COLOUR and TYPE: warm white and sand, deep teal (cool air) as the field, apricot (warm air) as the accent. Figtree, heavy for headings.
    LAYOUT: headline over a full-width plate-to-price band, then plain sections in one 1120px column, teal bands for the two asks. */
-:root{color-scheme:light dark;
+:root{color-scheme:light;
   --bg:light-dark(#ffffff,#0f1b1e);
   --steel:light-dark(#faf6f0,#172628);
   --line:light-dark(#e8ded1,#2b3b3e);
@@ -25,7 +26,7 @@
   --copper:light-dark(#c9581f,#f59a6a);
   --btn:#f28c5b;--btn-ink:#1f1a17;
   --on-field:#fffaf3}
-:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+:root,:root[data-theme=light],:root[data-theme=dark]{color-scheme:light}
 *{box-sizing:border-box;min-width:0}
 html{scroll-padding-top:72px;scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Figtree,system-ui,sans-serif;overflow-x:clip;font-variant-numeric:tabular-nums}
