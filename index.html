@@ -58,6 +58,7 @@ header{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92
 .nav nav{display:flex;gap:20px;flex-wrap:wrap}
 .nav nav a{color:var(--ink);text-decoration:none;font-weight:500}
 .nav nav a:hover{color:var(--blue)}
+.nav .s{display:none}
 .nav .btn{min-height:42px}
 
 /* hero */
@@ -93,6 +94,12 @@ header{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92
 .pb .was li{color:var(--soft)}
 .pb .now h4{color:var(--blue)}
 .pb .now{border-left:3px solid var(--blue);padding-left:22px}
+
+.roles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;margin-top:34px}
+.roles h3,.hb h3{margin-bottom:8px}
+.roles p,.hb p{color:var(--soft);margin:0}
+.hb{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:28px}
+.hb>div{background:var(--steel);border:1px solid var(--line);border-radius:16px;padding:22px}
 
 /* steps */
 .steps{list-style:none;padding:0;margin:30px 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;counter-reset:s}
@@ -168,13 +175,16 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
 
 @media (max-width:900px){
   .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .who{grid-template-columns:minmax(0,1fr);gap:24px}
+  .who,.roles{grid-template-columns:minmax(0,1fr);gap:24px}
+  .hb{grid-template-columns:repeat(2,minmax(0,1fr))}
   .hero .top,.send,.pros,.formgrid{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:600px){
-  .nav nav{display:none}
+  .nav nav{order:3;width:100%;flex-wrap:nowrap;overflow-x:auto;gap:18px;font-size:15px}
+  .nav nav a{flex:none;padding:6px 0}
+  .nav .l{display:none}.nav .s{display:inline}
   .pb .now{border-left:0;padding-left:0;border-top:3px solid var(--blue);padding-top:16px}
-  .vs,.cover,.row2,.steps,.pb-cols{grid-template-columns:minmax(0,1fr)}
+  .vs,.cover,.row2,.steps,.pb-cols,.hb{grid-template-columns:minmax(0,1fr)}
   .tl li{grid-template-columns:minmax(0,1fr);gap:2px}
   .lead{font-size:18px}
 }
@@ -189,10 +199,9 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
       Settled
     </a>
     <nav aria-label="Main">
-      <a href="#how">How it works</a>
-      <a href="#covers">What's included</a>
-      <a href="#installers">Installers</a>
-      <a href="#faq">Questions</a>
+      <a href="#real-estate"><span class="l">For real estate pros</span><span class="s">Real estate</span></a>
+      <a href="#contractors"><span class="l">For HVAC contractors</span><span class="s">Contractors</span></a>
+      <a href="#homeowners"><span class="l">For homeowners</span><span class="s">Homeowners</span></a>
     </nav>
     <a class="btn main" href="#quote">Request a price</a>
   </div>
@@ -273,15 +282,13 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
   </div>
 </section>
 
-<section class="band steel" id="problems">
+<section class="band" id="real-estate">
   <div class="wrap">
-    <h2>The problems we solve</h2>
-    <p class="lead">When a heating or cooling system dies, the owner needs a new one fast. But getting a price means waiting for a salesperson to come out, comparing bids, and hoping the final bill matches. For anyone who owns or manages more than one property, this happens again and again, and every time it starts from scratch.</p>
-    <p class="lead">We serve two sides: the people who need systems replaced, and the installers who do the work.</p>
+    <h2>For real estate professionals</h2>
+    <p class="lead">Property managers, owners, investors and agents all hit the same wall when a system dies: no price without a sales visit, bids to chase, and a bill that can change. Settled replaces that with one price from photos.</p>
 
     <div class="pb">
       <article>
-        <h3>For property owners, managers and agents</h3>
         <div class="pb-cols">
           <div class="was">
             <h4>The problem</h4>
@@ -306,29 +313,13 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
         </div>
       </article>
 
-      <article>
-        <h3>For HVAC installers</h3>
-        <div class="pb-cols">
-          <div class="was">
-            <h4>The problem</h4>
-            <ul>
-              <li>Much of your week goes to finding customers, marketing, sales calls and writing quotes.</li>
-              <li>Many of those quotes never turn into jobs.</li>
-              <li>Work comes and goes, which makes it hard to keep crews busy.</li>
-            </ul>
-          </div>
-          <div class="now">
-            <h4>How we solve it</h4>
-            <ul>
-              <li>All you do is install. We handle the customer, the marketing, the selling and the scheduling.</li>
-              <li>Jobs arrive already priced and approved.</li>
-              <li>We keep a flat percentage of each install. There are no lead fees and nothing to pay up front.</li>
-              <li>Repeat work from customers who own and manage many properties.</li>
-            </ul>
-          </div>
-        </div>
-      </article>
     </div>
+    <div class="roles">
+      <div><h3>Property managers</h3><p>One process for every property. Your owners approve a real number, your tenants get heat or air back sooner, and you stop chasing contractors.</p></div>
+      <div><h3>Owners and investors</h3><p>Know the replacement cost before you buy, budget or rehab. The number you plan around is the number you pay.</p></div>
+      <div><h3>Real estate agents</h3><p>When an inspection flags an old system, get a firm price fast. Negotiate the repair or credit with a real number and keep the closing on track.</p></div>
+    </div>
+    <p style="margin-top:26px"><a class="btn main" href="#quote">Request a price</a></p>
   </div>
 </section>
 
@@ -407,20 +398,61 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
   </div>
 </section>
 
-<section class="band" id="installers">
-  <div class="wrap pros">
-    <div>
-      <h2>For HVAC installers: all you do is install.</h2>
-      <p class="lead">We're a vetted network of trusted local installers. We bring the customer, sell the job and set the schedule. You show up and do the work.</p>
-      <p>We keep a flat percentage of each install, and only when there's a job. We vet every installer before they join and keep more than one in each market, so customers can trust whoever shows up and no one is stretched thin.</p>
-      <a class="btn main" href="#quote" data-role="installer">Apply to join the network</a>
+<section class="band" id="homeowners">
+  <div class="wrap">
+    <h2>For homeowners and tenants: heat and air back sooner, with no surprises.</h2>
+    <p class="lead">Whether you own the home or rent it, a dead system makes for a hard week. Here's what Settled changes for the people who live there.</p>
+    <div class="hb">
+      <div><h3>Back to normal sooner</h3><p>No waiting on sales visits and competing bids. Once the price is approved, we book the install.</p></div>
+      <div><h3>No surprise charges</h3><p>The price is set before work starts. Anything extra, like ductwork, is explained and approved first.</p></div>
+      <div><h3>A vetted, licensed installer</h3><p>Every contractor is checked before they join our network, so you know who's coming into your home.</p></div>
+      <div><h3>One point of contact</h3><p>One team to call from the first photo through any follow-up or warranty question.</p></div>
+      <div><h3>A complete job</h3><p>Permit pulled, old unit hauled away, and a new thermostat and pad included.</p></div>
+      <div><h3>A sale that stays on track</h3><p>Buying or selling? A firm price keeps the deal from stalling over the system.</p></div>
     </div>
-    <ul>
-      <li><strong>We handle the customer</strong><span>Marketing, selling, quoting, scheduling and follow-up calls are on us.</span></li>
-      <li><strong>A flat percentage per install</strong><span>No lead fees, no marketing spend, nothing up front.</span></li>
-      <li><strong>Like-for-like work</strong><span>Same size, same type, existing connections. Extras are quoted and approved before you arrive.</span></li>
-      <li><strong>Vetted and trusted</strong><span>Every installer is checked before joining, which is why customers say yes without a sales visit.</span></li>
-    </ul>
+  </div>
+</section>
+
+<section class="band" id="contractors">
+  <div class="wrap">
+    <h2>For HVAC contractors: all you do is install.</h2>
+    <p class="lead">Settled is a vetted network of trusted local contractors. We bring the customer, sell the job and set the schedule. You show up and do the work.</p>
+    <div class="pb">
+      <article>
+        <div class="pb-cols">
+          <div class="was">
+            <h4>The problem</h4>
+            <ul>
+              <li>Much of your week goes to finding customers, marketing, sales calls and writing quotes.</li>
+              <li>Many of those quotes never turn into jobs.</li>
+              <li>Work comes and goes, which makes it hard to keep crews busy.</li>
+            </ul>
+          </div>
+          <div class="now">
+            <h4>How we solve it</h4>
+            <ul>
+              <li>All you do is install. We handle the customer, the marketing, the selling and the scheduling.</li>
+              <li>Jobs arrive already priced and approved.</li>
+              <li>We keep a flat percentage of each install. There are no lead fees and nothing to pay up front.</li>
+              <li>Repeat work from customers who own and manage many properties.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="pros" style="margin-top:34px">
+      <div>
+        <h3>How it works for you</h3>
+        <p style="margin-top:10px">We keep a flat percentage of each install, and only when there's a job. We vet every contractor before they join and keep more than one in each market, so customers can trust whoever shows up and no one is stretched thin.</p>
+        <a class="btn main" href="#quote" data-role="installer">Apply to join the network</a>
+      </div>
+      <ul>
+        <li><strong>We handle the customer</strong><span>Marketing, selling, quoting, scheduling and follow-up calls are on us.</span></li>
+        <li><strong>A flat percentage per install</strong><span>No lead fees, no marketing spend, nothing up front.</span></li>
+        <li><strong>Like-for-like work</strong><span>Same size, same type, existing connections. Extras are quoted and approved before you arrive.</span></li>
+        <li><strong>Vetted and trusted</strong><span>Every contractor is checked before joining, which is why customers say yes without a sales visit.</span></li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -443,7 +475,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
     <div>
       <h2>Request a price</h2>
       <p class="lead">Tell us about the system. We'll reply with a link to send the label photo and the photo of the space, then send back one price.</p>
-      <p class="small">Installers can use this form too. Choose "HVAC installer" and tell us your market.</p>
+      <p class="small">HVAC contractors can use this form too. Choose "HVAC contractor" and tell us your market.</p>
     </div>
     <form id="qf" novalidate>
       <fieldset>
@@ -451,7 +483,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
         <div class="chips">
           <label><input type="radio" name="role" value="Property owner or manager" checked> Property owner or manager</label>
           <label><input type="radio" name="role" value="Real estate agent"> Agent</label>
-          <label><input type="radio" name="role" value="HVAC installer" id="r-inst"> HVAC installer</label>
+          <label><input type="radio" name="role" value="HVAC contractor" id="r-inst"> HVAC contractor</label>
         </div>
       </fieldset>
       <div class="row2">
@@ -527,7 +559,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
     text = lines.join("\n");
     $("sum").textContent = lines.join(" | ");
     $("done").classList.add("show");
-    const subject = role === "HVAC installer" ? "Installer network: " + name : "Replacement price request: " + name;
+    const subject = role === "HVAC contractor" ? "Contractor network: " + name : "Replacement price request: " + name;
     location.href = "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(text);
   });
 
